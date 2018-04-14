@@ -91,7 +91,7 @@ int addDigits(int num) {
 }
 ```
 
-Analisys:
+Analisys: follow below rule, and find number mod 9, and the resule very close to expected result.
 
 0->0
 
