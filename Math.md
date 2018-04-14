@@ -67,3 +67,26 @@ int* selfDividingNumbers(int left, int right, int* returnSize) {
 
 Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 
+```c
+int addDigits(int num) {
+    int t1 = num;
+    int t2 = num;
+    int sum = 0;
+
+    while (t1 > 9)
+    {
+        sum = 0;
+        t2 = t1;
+
+        while (t2 != 0)
+        {
+            sum += (t2 % 10);
+            t2 /= 10;
+        }
+
+        t1 = sum;
+    }
+
+    return t1;
+}
+```
