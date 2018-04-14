@@ -6,6 +6,7 @@ A self-dividing number is a number that is divisible by every digit it contains.
 Example:
 Input: left = 1, right = 22
 Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
 Note:
 The boundaries of each input argument are 1 <= left <= right <= 10000.
 
@@ -61,4 +62,8 @@ int* selfDividingNumbers(int left, int right, int* returnSize) {
     return array;
 }
 ```
+
+## 2. Add Digits
+
+Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 
