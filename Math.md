@@ -90,3 +90,42 @@ int addDigits(int num) {
     return t1;
 }
 ```
+
+Analisys:
+
+0->0
+
+1->1
+
+...
+
+9->9
+
+10->1
+
+11->2
+
+...
+
+18->9
+
+19->1
+
+...
+
+```c
+int addDigits(int num) {
+    int t = num;
+
+    if (t == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        t %= 9;
+        return ((t == 0) ? 9 : t);
+    }
+}
+```
+
