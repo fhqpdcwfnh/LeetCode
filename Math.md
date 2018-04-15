@@ -1,5 +1,33 @@
 # Math problem
 
+## 3. Excel Sheet Column Number
+
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+
+```c
+int titleToNumber(char* s) {
+    int i = 0;
+    int num = 0;
+ 
+    for (i = 0; s[i] != '\0'; ++i)
+    {
+        num = num * 26 + s[i] - 'A' + 1;
+    }
+
+    return num;
+}
+```
+
 ## 2. Add Digits
 
 Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
@@ -30,25 +58,16 @@ int addDigits(int num) {
 
 Analisys: follow below rule, and find number mod 9, and the resule very close to expected result.
 
-0->0
-
-1->1
-
-...
-
-9->9
-
-10->1
-
-11->2
-
-...
-
-18->9
-
-19->1
-
-...
+    0->0
+    1->1
+    ...
+    9->9
+    10->1
+    11->2
+    ...
+    18->9
+    19->1
+    ...
 
 ```c
 int addDigits(int num) {
