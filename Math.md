@@ -1,10 +1,72 @@
 # Math problem
+---
 
+---
+## 5. Missing Number
+
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+Example 1:
+
+    Input: [3,0,1]
+    Output: 2
+
+Example 2:
+
+    Input: [9,6,4,2,3,5,7,0,1]
+    Output: 8
+
+```c
+int missingNumber(int* nums, int numsSize) {
+    int i = 0;
+    int sum = 0;
+    
+    for (i = 0; i < numsSize; ++i)
+    {
+        sum += nums[i];
+    }
+    
+    return ((numsSize + 1) * numsSize / 2 - sum);
+}
+```
+
+---
+## 4. Minimum Moves to Equal Array Elements
+
+Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.
+
+Example:
+
+    Input: [1,2,3]
+    Output: 3
+
+Explanation:
+
+    Only three moves are needed (remember each move increments two elements):
+    [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+
+```c
+int minMoves(int* nums, int numsSize) {
+    int i = 0;
+    int sum = nums[0];
+    int min = nums[0];
+
+    for (i = 1; i < numsSize; ++i)
+    {
+        min = (min < nums[i]) ? min : nums[i];
+        sum += nums[i];
+    }
+    
+    return (sum - (min * numsSize));
+}
+```
+
+---
 ## 3. Excel Sheet Column Number
 
 Given a column title as appear in an Excel sheet, return its corresponding column number.
 
-For example:
+Example:
 
     A -> 1
     B -> 2
@@ -28,6 +90,7 @@ int titleToNumber(char* s) {
 }
 ```
 
+---
 ## 2. Add Digits
 
 Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. For example: Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
@@ -85,16 +148,19 @@ int addDigits(int num) {
 }
 ```
 
+---
 ## 1. Self Dividing Numbers
 
 A self-dividing number is a number that is divisible by every digit it contains. For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0. Also, a self-dividing number is not allowed to contain the digit zero. Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
 
 Example:
-Input: left = 1, right = 22
-Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+    Input: left = 1, right = 22
+    Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
 
 Note:
-The boundaries of each input argument are 1 <= left <= right <= 10000.
+
+    The boundaries of each input argument are 1 <= left <= right <= 10000.
 
 ```c
 /**
