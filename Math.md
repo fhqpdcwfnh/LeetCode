@@ -1,6 +1,60 @@
 # Math problem
 
 ---
+## 8. Happy Number
+
+Write an algorithm to determine if a number is "happy". A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+
+Example: 19 is a happy number
+
+    12 + 92 = 82
+    82 + 22 = 68
+    62 + 82 = 100
+    12 + 02 + 02 = 1
+
+Analysis:
+
+Use Floyd Cycle Detection algorithm.
+[CSDN explaination](https://blog.csdn.net/Javasus/article/details/50015687); 
+[CSDN explaination with code](https://blog.csdn.net/gdymind/article/details/70544153);
+[Wiki](https://en.wikipedia.org/wiki/Cycle_detection);
+
+```c
+int next(int n)
+{
+    int res=0;
+
+    while (n != 0)
+    {
+        int t = n % 10;
+        res += (t * t);
+        n /= 10;
+    }
+
+    return res;
+}
+
+bool isHappy(int n) {
+    int slow = n;
+    int fast = n;
+
+    do
+    {
+        slow = next(slow);
+        fast = next(next(fast));
+
+        if ((slow == 1) || (fast == 1))
+        {
+            return true;
+        }
+    }
+    while (slow != fast);
+
+    return false;
+}
+```
+
+---
 ## 7. Hamming Distance
 
 The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given two integers x and y, calculate the Hamming distance. Note: 0 ≤ x, y < 231.
