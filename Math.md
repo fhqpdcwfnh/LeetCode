@@ -5,6 +5,10 @@
 
 Given an integer, write a function to determine if it is a power of two.
 
+Analysis:
+
+Power of 2 means only one bit of n is ‘1’, so use n&(n-1)==0 to judge
+
 ```c
 bool isPowerOfTwo(int n) {
     return !((n <= 0) || (n & (n - 1)));
