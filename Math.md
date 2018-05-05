@@ -1,6 +1,41 @@
 # Math problem
 
 ---
+## 10. Ugly Number
+
+Write a program to check whether a given number is an ugly number. Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.
+
+Note:
+
+    1 is typically treated as an ugly number.
+
+```c
+bool isUgly(int num) {
+    uint i = 0;
+
+    if (num <= 0)
+    {
+        return false;
+    }
+
+    for (i = 2; i < 6; ++i)
+    {
+        while (num % i == 0)
+        {
+            num /= i;
+        }
+
+        if (num == 1)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+```
+
+---
 ## 9. Power of Two
 
 Given an integer, write a function to determine if it is a power of two.
