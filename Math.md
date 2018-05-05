@@ -7,7 +7,7 @@ Write a program to check whether a given number is an ugly number. Ugly numbers 
 
 Note:
 
-1 is typically treated as an ugly number.
+    1 is typically treated as an ugly number.
 
 ```c
 bool isUgly(int num) {
@@ -42,7 +42,7 @@ Given an integer, write a function to determine if it is a power of two.
 
 Analysis:
 
-Power of 2 means only one bit of n is ‘1’, so use n&(n-1)==0 to judge
+    Power of 2 means only one bit of n is ‘1’, so use n&(n-1)==0 to judge
 
 ```c
 bool isPowerOfTwo(int n) {
@@ -64,10 +64,10 @@ Example: 19 is a happy number
 
 Analysis:
 
-Use Floyd Cycle Detection algorithm.
-[CSDN explaination](https://blog.csdn.net/Javasus/article/details/50015687); 
-[CSDN explaination with code](https://blog.csdn.net/gdymind/article/details/70544153);
-[Wiki](https://en.wikipedia.org/wiki/Cycle_detection);
+    Use Floyd Cycle Detection algorithm.
+    [CSDN explaination](https://blog.csdn.net/Javasus/article/details/50015687); 
+    [CSDN explaination with code](https://blog.csdn.net/gdymind/article/details/70544153);
+    [Wiki](https://en.wikipedia.org/wiki/Cycle_detection);
 
 ```c
 int next(int n)
