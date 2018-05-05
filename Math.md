@@ -62,12 +62,9 @@ Example: 19 is a happy number
     62 + 82 = 100
     12 + 02 + 02 = 1
 
-Analysis:
+Analysis: [CSDN explaination](https://blog.csdn.net/Javasus/article/details/50015687); [CSDN explaination with code](https://blog.csdn.net/gdymind/article/details/70544153); [Wiki](https://en.wikipedia.org/wiki/Cycle_detection);
 
     Use Floyd Cycle Detection algorithm.
-    [CSDN explaination](https://blog.csdn.net/Javasus/article/details/50015687); 
-    [CSDN explaination with code](https://blog.csdn.net/gdymind/article/details/70544153);
-    [Wiki](https://en.wikipedia.org/wiki/Cycle_detection);
 
 ```c
 int next(int n)
@@ -295,7 +292,9 @@ int addDigits(int num) {
 }
 ```
 
-Analisys: follow below rule, and find number mod 9, and the resule very close to expected result.
+Analisys:
+
+    follow below rule, and find number mod 9, and the resule very close to expected result.
 
     0->0
     1->1
