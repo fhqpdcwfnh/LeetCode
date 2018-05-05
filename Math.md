@@ -7,7 +7,7 @@ Write a program to check whether a given number is an ugly number. Ugly numbers 
 
 Note:
 
-    1 is typically treated as an ugly number.
+1 is typically treated as an ugly number.
 
 ```c
 bool isUgly(int num) {
