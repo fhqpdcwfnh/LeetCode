@@ -1,6 +1,75 @@
 # Math problem
 
 ---
+## 11. Set Mismatch
+
+The set S originally contains numbers from 1 to n. But unfortunately, due to the data error, one of the numbers in the set got duplicated to another number in the set, which results in repetition of one number and loss of another number. Given an array nums representing the data status of this set after the error. Your task is to firstly find the number occurs twice and then find the number that is missing. Return them in the form of an array.
+
+Example:
+
+    Input: nums = [1,2,2,4]
+    Output: [2,3]
+
+Analysis: XOR data, for example: x ^ x = 0.
+
+    for example: [1 2 3 2 5 6], and all numbers [1 2 3 4 5 6].
+    In binary: [001 010 011 010 101 110], [001 010 011 100 101 110].
+
+If we XOR the 2 arrays, we will get the XOR of our duplicate and missing number. In our case, missing ^ duplicate = 110. We know the missing and duplicate number are different in the first and second most significant bits (110). So let's take the last one: 110 -> get last 1 -> 010. Then, we go through the arrays once again and split them in 2 categories, if they have that bit set or not:
+
+    (x & 010) != 0: [010 011 010 110], [010 011 110] -> XOR all of them and we get 010.
+    (x & 010) == 0: [001 101], [001 100 101] -> XOR all of them and we get 100.
+
+010 and 100 (2 and 4) are our duplicate and missing numbers, but we don't know which is which. Just go one more time through the array to see which one we can find, in our case: 010. So 2 is the duplicate, and 4 the missing one.
+
+```c
+/**
+ * Return an array of size *returnSize.
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findErrorNums(int* nums, int numsSize, int* returnSize) {
+    int i = 0;
+    int res = 0;
+    int res1 = 0;
+    int res2 = 0;
+    int *res3 = NULL;
+
+    // xor all the data
+    for (i = 0; i < numsSize; ++i)
+    {
+        res ^= (nums[i] ^ (i + 1));
+    }
+
+    // get the rightmost 1-bit
+    res &= (-res);
+
+    // find the x and y
+    for (i = 0; i < numsSize; ++i)
+    {
+        ((nums[i] & res) != 0) ? (res1 ^= nums[i]) : (res2 ^= nums[i]);
+        (((i + 1) & res) != 0) ? (res1 ^= (i + 1)) : (res2 ^= (i + 1));
+    }
+
+    // alloc memory
+    *returnSize = 2;
+    res3 = (int *)malloc(sizeof(int) * (*returnSize));
+    res3[0] = res1;
+    res3[1] = res2;
+
+    for (i = 0; i < numsSize; ++i)
+    {
+        if (nums[i] == res2)
+        {
+            res3[0] = res2;
+            res3[1] = res1;
+        }
+    }
+
+    return res3;
+}
+```
+
+---
 ## 10. Ugly Number
 
 Write a program to check whether a given number is an ugly number. Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.
